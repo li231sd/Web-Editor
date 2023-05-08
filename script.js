@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <h1 id="h1">/</h1>
 
     <script>
+        //Errors show in the console!
         document.getElementById("h1").innerHTML = "Hello World";
     </script>
 </body>
@@ -60,29 +61,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Upload HTML file
-    document.getElementById("Upload").addEventListener("click", function () {
-        document.getElementById("UploadWindow").style.display = "block";
-    });
-
     document.getElementById("UploadButton").addEventListener("click", function () {
-        var fileInput = document.getElementById("file");
-        var file = fileInput.files[0];
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            var uploadedCode = e.target.result;
-            editor.setValue(uploadedCode);
-            editor.clearSelection();
-            runCode();
-            document.getElementById("UploadWindow").style.display = "none";
-            fileInput.value = ""; // Clear the file input value
-        };
-
-        reader.readAsText(file);
+        document.getElementById("file").click();
     });
 
-    // Close upload window
-    document.getElementById("CloseButton").addEventListener("click", function () {
-        document.getElementById("UploadWindow").style.display = "none";
+    document.getElementById("file").addEventListener("change", function (e) {
+        var file = e.target.files[0];
+        if (file && file.name.endsWith(".html")) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var contents = e.target.result;
+                editor.setValue(contents);
+                runCode();
+            };
+            reader.readAsText(file);
+        } else {
+            alert("Please select a valid HTML file.");
+        }
     });
+
+    // Custom console logging
+    var consoleElement = document.getElementById("console");
+
+    function customLog(message) {
+        var logElement = document.createElement("div");
+        logElement.textContent = message;
+        consoleElement.appendChild(logElement);
+        originalConsoleLog.apply(console, arguments);
+    }
+
+    var originalConsoleLog = console.log;
+    console.log = customLog;
+
+    window.onerror = function (errorMsg, url, lineNumber) {
+        customLog("Error: " + errorMsg + " at " + url + ":" + lineNumber);
+        return false;
+    };
 });
