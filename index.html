@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web Editor</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+        <script src="https://kit.fontawesome.com/19a6c9693b.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="editor">
+                <div id="codeEditor"></div>
+            </div>
+
+            <div class="output">
+                <iframe id="outputFrame"></iframe>
+            </div>
+
+            <button id="Download"><i class="fas fa-download"></i></button>
+            <button id="Upload"><i class="fas fa-upload"></i></button>
+        </div>
+
+        <div id="UploadWindow">
+            <h2>Upload HTML File</h2>
+            <input type="file" id="file" accept=".html">
+            <button id="UploadButton">Upload</button>
+            <i id="CloseButton" class="fas fa-times"></i>
+        </div>        
+
+        <script src="script.js"></script>
+    </body>
+</html>

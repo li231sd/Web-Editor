@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.editor {
+    flex: 1;
+    background-color: #111;
+    color: #fff;
+}
+
+#codeEditor {
+    width: 100%;
+    height: 100vh;
+}
+
+.output {
+    flex: 1;
+    background-color: #FFF;
+}
+
+#Download {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#Download:hover {
+    background-color: #555;
+}
+
+#outputFrame {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#Upload {
+    position: fixed;
+    top: 10px;
+    right: 70px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#Upload:hover {
+    background-color: #555;
+}
+
+#UploadWindow {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    border: 2px solid #939393;
+}
+
+#UploadWindow h2 {
+    margin-top: 0;
+}
+
+#UploadWindow label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#UploadWindow button {
+    margin-top: 10px;
+}
+
+#CloseButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #a31111;
+    cursor: pointer;
+}
+
+#CloseButton:hover {
+    color: #ff0000;
+}
