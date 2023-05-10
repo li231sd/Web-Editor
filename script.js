@@ -3,6 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
     var editor = ace.edit("codeEditor");
     editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/html");
+
+    ace.require("ace/ext/language_tools");
+    editor.setOptions({
+      enableBasicAutocompletion: true,
+      enableLiveAutocompletion: true,
+      enableEmmet: true,
+    });  
   
     // Set initial code
     var initialCode = `<!DOCTYPE html>
